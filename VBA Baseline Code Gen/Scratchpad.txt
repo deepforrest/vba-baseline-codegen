@@ -1,0 +1,208 @@
+Scratchpad
+
+Nomenclature of all variables produced:
+
+dtPreInitCodeNameSuffix
+
+Where each part is as follows:
+
+Datatype (dt): The type of data stored, whether if it is numeric (i), boolean (b), string (s), object (o) or variant (v).
+
+PreInit: The initials of the objects before, such as Workbooks, Worksheets, and Tables.  Additionally, it can have 
+identifiers that assist in identifying other properties, such as an Array (Arr) and with Global (Gbl) variables whether
+if they are constants (C) or variables (V).
+
+CodeName: The name assigned to give the variable actual meaning.
+
+Suffix:  The type of Object that follows the codename, such as Worksheet, Table, Column, Header, etc.
+
+
+
+
+
+
+
+' ' OLD TABLE SORTER
+
+' Sub WriteTableSorterOld()
+
+'     Call WriteSetterOutput(iNoIndent, WriteSubOneArg("SortTable", "iDummyColumn", TypeByte), 2)
+
+'     Call WriteSetterOutput(iSingleIndent, "Set DummyTable = SelectedWorksheet.ListObjects(sSelectedTable)", 1)
+'     Call WriteSetterOutput(iSingleIndent, "Set SortKey = SelectedWorksheet.Cells(iSelectedHeaderRow, iSelectedColumn)", 2)
+
+'     Call WriteSetterOutput(iSingleIndent, "DummyTable.Sort. _", 1)
+'     Call WriteSetterOutput(iDoubleIndent, "SortFields.Clear", 2)
+
+'     Call WriteSetterOutput(iSingleIndent, "DummyTable.Sort. _", 1)
+'     Call WriteSetterOutput(iDoubleIndent, "SortFields.Add2 Key:=SortKey, SortOn:=xlSortOnValues, _", 1)
+'     Call WriteSetterOutput(iDoubleIndent, "Order:=xlAscending, DataOption:=xlSortNormal", 2)
+
+'     Call WriteSetterOutput(iSingleIndent, "With DummyTable.Sort", 2)
+
+'     Call WriteSetterOutput(iDoubleIndent, ".Header = xlYes", 1)
+'     Call WriteSetterOutput(iDoubleIndent, ".MatchCase = False", 1)
+'     Call WriteSetterOutput(iDoubleIndent, ".Orientation = xlTopToBottom", 1)
+'     Call WriteSetterOutput(iDoubleIndent, ".SortMethod = xlPinYin", 2)
+
+'     Call WriteSetterOutput(iSingleIndent, "End With", 1)
+    
+'     WriteEndSub
+
+
+' End Sub
+
+
+'***************************************************************************************************************************************'
+
+   ' 'TABLES
+    ' If arrTblIndexCounter > 0 Then
+
+    '     ' Tables
+    '     InitializeAllTableScanners
+    '     iArrIndexCounter = 0
+    '     Call WriteSetterOutput(iSingleIndent, CommentOut(iSingleIndent, "Table Indices"), 1)
+
+    '     Do Until iArrIndexCounter > arrTblIndexCounter
+
+    '         MatchPairsUpTo(sObjectType)
+
+    '         Call WriteSetterOutput(iDoubleIndent, "Const " + CStr(iiWsInitCell + iiTblInitCell) + "TblIndex As Byte = " + CStr(iArrIndexCounter), 1)
+            
+    '         InitializeRowScannerAndTable (siiWsRowScanner)
+
+    '         Call SetNextRowTableScanner(siiTblRowScanner, 1)
+    '         iArrIndexCounter = iArrIndexCounter + 1
+
+    '     Loop
+
+    '     Call SetNextRowTableScanner(ssoRowScanner, 1)
+        
+        
+    '     ' Tables
+    '     InitializeAllTableScanners
+    '     iArrIndexCounter = 0
+    '     Call WriteSetterOutput(iSingleIndent, CommentOut(iSingleIndent, "Table Arrays"), 1)
+
+    '     Do Until iArrIndexCounter > arrTblIndexCounter
+
+    '         Do Until iiWsMainNameCell = iiTblWsCell
+
+    '             NotFoundTest (iiWsMainNameCell)
+    '             Call SetNextRowTableScanner(siiWsRowScanner, 1)
+
+    '         Loop
+
+    '         Call WriteSetterOutput(iDoubleIndent, "arrTables(" + CStr(iiWsInitCell + iiTblInitCell) + "TblIndex) = " + CStr(iiWsInitCell) + "Tbl" + CStr(iiTblCodeNameCell), 1)
+            
+    '         InitializeRowScannerAndTable (siiWsRowScanner)
+
+    '         Call SetNextRowTableScanner(siiTblRowScanner, 1)
+    '         iArrIndexCounter = iArrIndexCounter + 1
+
+    '     Loop
+
+    '     Call SetNextRowTableScanner(ssoRowScanner, 1)
+
+    '     ' NumRS Arrays
+    '     InitializeAllTableScanners
+    '     iArrIndexCounter = 0
+    '     Call WriteSetterOutput(iSingleIndent, CommentOut(iSingleIndent, "Num RS Arrays"), 1)
+
+
+    '     Do Until iArrIndexCounter > arrTblIndexCounter
+        
+    '         Do Until iiWsMainNameCell = iiTblWsCell
+
+    '             NotFoundTest (iiWsMainNameCell)
+    '             Call SetNextRowTableScanner(siiWsRowScanner, 1)
+
+    '         Loop
+
+    '         Call WriteSetterOutput(iDoubleIndent, "arrNumRowScanners(" + CStr(iiWsInitCell + iiTblInitCell) + "TblIndex) = " + CStr(iiWsInitCell + iiTblInitCell) + "RowScanner", 1)
+            
+    '         Call SetNextRowTableScanner(siiTblRowScanner, 1)
+    '         iArrIndexCounter = iArrIndexCounter + 1
+    '         InitializeRowScannerAndTable (siiWsRowScanner)
+
+    '     Loop
+
+    '     Call SetNextRowTableScanner(ssoRowScanner, 1)
+
+
+    '     ' StrRS Arrays
+    '     InitializeAllTableScanners
+    '     iArrIndexCounter = 0
+    '     Call WriteSetterOutput(iSingleIndent, CommentOut(iSingleIndent, "Str RS Arrays"), 1)
+
+
+    '     Do Until iArrIndexCounter > arrTblIndexCounter
+        
+    '         Do Until iiWsMainNameCell = iiTblWsCell
+
+    '             NotFoundTest (iiWsMainNameCell)
+    '             Call SetNextRowTableScanner(siiWsRowScanner, 1)
+
+    '         Loop
+
+    '         Call WriteSetterOutput(iDoubleIndent, "arrStrRowScanners(" + CStr(iiWsInitCell + iiTblInitCell) + "TblIndex) = s" + CStr(iiWsInitCell + iiTblInitCell) + "RowScanner", 1)
+            
+    '         Call SetNextRowTableScanner(siiTblRowScanner, 1)
+    '         InitializeRowScannerAndTable (siiWsRowScanner)
+    '         iArrIndexCounter = iArrIndexCounter + 1
+
+    '     Loop
+
+    '     Call SetNextRowTableScanner(ssoRowScanner, 1)
+
+    '     ' HeaderRow Arrays
+    '     InitializeAllTableScanners
+    '     iArrIndexCounter = 0
+    '     Call WriteSetterOutput(iSingleIndent, CommentOut(iSingleIndent, "HeaderRow Arrays"), 1)
+
+
+    '     Do Until iArrIndexCounter > arrTblIndexCounter
+        
+    '         Do Until iiWsMainNameCell = iiTblWsCell
+
+    '             NotFoundTest (iiWsMainNameCell)
+    '             Call SetNextRowTableScanner(siiWsRowScanner, 1)
+
+    '         Loop
+
+    '         Call WriteSetterOutput(iDoubleIndent, "arrHeaderRows(" + CStr(iiWsInitCell + iiTblInitCell) + "TblIndex) = " + CStr(iiWsInitCell + iiTblInitCell) + "HeaderRow", 1)
+            
+    '         Call SetNextRowTableScanner(siiTblRowScanner, 1)
+    '         InitializeRowScannerAndTable (siiWsRowScanner)
+    '         iArrIndexCounter = iArrIndexCounter + 1
+
+    '     Loop
+
+    '     Call SetNextRowTableScanner(ssoRowScanner, 1)
+
+    '     ' InitialRow Arrays
+    '     InitializeAllTableScanners
+    '     iArrIndexCounter = 0
+    '     Call WriteSetterOutput(iSingleIndent, CommentOut(iSingleIndent, sInitialRow + sArrays), 1)
+
+
+    '     Do Until iArrIndexCounter > arrTblIndexCounter
+        
+    '         Do Until iiWsMainNameCell = iiTblWsCell
+
+    '             NotFoundTest (iiWsMainNameCell)
+    '             Call SetNextRowTableScanner(siiWsRowScanner, 1)
+
+    '         Loop
+
+    '         Call WriteSetterOutput(iDoubleIndent, "arrInitialRows(" + CStr(iiWsInitCell + iiTblInitCell) + "TblIndex) = " + CStr(iiWsInitCell + iiTblInitCell) + "InitialRow", 1)
+            
+    '         Call SetNextRowTableScanner(siiTblRowScanner, 1)
+    '         InitializeRowScannerAndTable (siiWsRowScanner)
+    '         iArrIndexCounter = iArrIndexCounter + 1
+
+    '     Loop
+
+    '     Call SetNextRowTableScanner(ssoRowScanner, 1)
+
+    ' End If
